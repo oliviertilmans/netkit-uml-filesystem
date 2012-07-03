@@ -25,6 +25,9 @@ debianutils
 dhcp3-client
 dhcp3-common
 dhcp3-server
+dibbler-client
+dibbler-relay
+dibbler-server
 dialog
 diff
 dnsmasq
@@ -35,8 +38,7 @@ dsniff
 e2fslibs
 e2fsprogs
 ebtables
-emacs21-nox
-emcast
+emacs23-nox
 ettercap
 exim4
 exim4-base
@@ -48,8 +50,6 @@ findutils
 freeradius
 ftp
 grep
-groff
-groff-base
 gzip
 host
 hostname
@@ -73,7 +73,6 @@ logrotate
 lrzsz
 lsof
 lynx
-mailx
 makedev
 man-db
 manpages
@@ -113,7 +112,6 @@ perl
 perl-base
 perl-modules
 pimd
-pipsecd
 portmap
 ppp
 procmail
@@ -131,7 +129,6 @@ screen
 sed
 sendip
 shorewall-shell
-sing
 smbclient
 smbfs
 smcroute
