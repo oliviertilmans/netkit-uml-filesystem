@@ -38,21 +38,21 @@ NORMAL_TEXT=$'\e[0m\e[34m'
 PLAIN_TEXT=$'\e[0m'
 INFO_FIELD=$'\e[34;1m'
 
+# Variables from the kernel command line (used by both start and stop,
+# namely $HOSTNAME - we don't trust what happens to $HOSTNAME within system)
+ASSIGN_VARIABLES=`cat /proc/cmdline | awk -v FS== -v RS=' ' \
+    '
+                    ($1=="name") {print "HOSTNAME=" $2}
+                    ($1=="hostlab") {print "HOSTLAB=" $2}
+                    ($1=="exec") {print "COMMAND=" $2}
+                    ($1=="test") {print "TEST=" $1}
+                    '`
+eval "$ASSIGN_VARIABLES"
 
 case "$1" in
    start) 
       echo
       echo "${DELIMITER_TEXT}--- Starting Netkit phase 2 init script ---${NORMAL_TEXT}"
-
-      ASSIGN_VARIABLES=`cat /proc/cmdline | awk -v FS== -v RS=' ' \
-         '
-            ($1=="name") {print "HOSTNAME=" $2}
-            ($1=="hostlab") {print "HOSTLAB=" $2}
-            ($1=="exec") {print "COMMAND=" $2}
-            ($1=="test") {print "TEST=" $1}
-         '`
-
-      eval "$ASSIGN_VARIABLES"
 
       if [ -f /hostlab/shared.startup ]; then
          echo
@@ -65,7 +65,7 @@ case "$1" in
       if [ -f /hostlab/$HOSTNAME.startup ]; then
          echo
          echo ">>> Running $HOSTNAME specific startup script..."
-         /bin/sh -c '. /hostlab/$HOSTNAME.startup'
+         /bin/sh -c ". /hostlab/$HOSTNAME.startup"
          echo ">>> End of $HOSTNAME specific startup script."
          echo
       fi
@@ -123,7 +123,7 @@ case "$1" in
       if [ -f /hostlab/$HOSTNAME.shutdown ]; then
          echo
          echo ">>> Running $HOSTNAME specific shutdown script..."
-         /bin/sh -c '. /hostlab/$HOSTNAME.shutdown'
+         /bin/sh -c ". /hostlab/$HOSTNAME.shutdown"
          echo ">>> End of $HOSTNAME specific shutdown script."
          echo
       fi
