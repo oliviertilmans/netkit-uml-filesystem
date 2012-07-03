@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Disabling unneeded system services..."
 for SERVICE in $(<disabled-system-services); do

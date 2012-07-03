@@ -329,7 +329,7 @@ $(PACKAGES_TARBALL_BASENAME).tgz: | .base_system_installed
 	echo -e "\n\e[1m\e[33m=== Downloading additional packages... ===\e[0m"
 	$(MOUNT_FS)
 	$(SUDO_PFX)chroot $(FS_MOUNT_DIR) apt-get update$(SUDO_SFX)
-	for PACKAGE in $$(<$(FS_BUILD_DIR)/packages-list); do echo Downloading $${PACKAGE} and its dependencies...; $(SUDO_PFX)chroot $(FS_MOUNT_DIR) apt-get -fqqy --download-only install $${PACKAGE}$(SUDO_SFX); done
+	for PACKAGE in `cat $(FS_BUILD_DIR)/packages-list`; do echo Downloading $${PACKAGE} and its dependencies...; $(SUDO_PFX)chroot $(FS_MOUNT_DIR) apt-get -fqqy --download-only install $${PACKAGE}$(SUDO_SFX); done
 	echo "Compressing packages..."; tar -C $(FS_MOUNT_DIR)/var/cache/apt --exclude=lock -czf $(PACKAGES_TARBALL_TIMESTAMP_BASENAME).tgz .
 	ln -fs $(PACKAGES_TARBALL_TIMESTAMP_BASENAME).tgz $(PACKAGES_TARBALL_BASENAME).tgz
 
