@@ -272,7 +272,7 @@ $(BASE_PACKAGES_TARBALL_BASENAME).tgz:
 .base_system_installed: $(BASE_PACKAGES_TARBALL_BASENAME).tgz .fs_created
 	echo -e "\n\e[1m\e[32m======= Installing base system... ========\e[0m"
 	$(MOUNT_FS)
-	$(SUDO_PFX)$(DEBOOTSTRAP) --arch=$(SUBARCH) $(if $(ADDITIONAL_PACKAGES),--include $(ADDITIONAL_PACKAGES),) --unpack-tarball $(CURDIR)/$(BASE_PACKAGES_TARBALL_BASENAME).tgz --no-resolve-deps $(DEBIAN_VERSION) $(FS_MOUNT_DIR) $(DEBIAN_MIRROR)
+	$(SUDO_PFX)$(DEBOOTSTRAP) --arch=$(SUBARCH) $(if $(ADDITIONAL_PACKAGES),--include $(ADDITIONAL_PACKAGES),) --unpack-tarball $(CURDIR)/$(BASE_PACKAGES_TARBALL_BASENAME).tgz $(DEBIAN_VERSION) $(FS_MOUNT_DIR) $(DEBIAN_MIRROR)
 	: > .base_system_installed
 
 .SILENT: .full_system_installed
