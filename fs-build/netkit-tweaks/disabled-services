@@ -25,4 +25,5 @@ dnsmasq
 quagga
 dbus
 pdns-recursor
+isc-dhcp-server
 

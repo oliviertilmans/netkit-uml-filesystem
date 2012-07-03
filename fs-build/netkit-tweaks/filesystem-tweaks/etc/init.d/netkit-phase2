@@ -23,8 +23,8 @@
 # Provides:          netkit-phase2
 # Required-Start:
 # Required-Stop:
-# Should-Start:      netkit-phase1
-# Should-Stop:       netkit-phase1
+# Should-Start:      netkit-phase1 networking
+# Should-Stop:       netkit-phase1 networking
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Netkit phase 2
@@ -106,8 +106,8 @@ case "$1" in
       fi
 
 
-		if [ ! -z "$TEST" ]; then
-         /etc/init.d/netkit-test-phase
+      if [ ! -z "$TEST" ]; then
+         /sbin/netkit-test-phase
       fi
       
 

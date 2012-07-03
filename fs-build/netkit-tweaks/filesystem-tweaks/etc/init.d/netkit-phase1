@@ -148,12 +148,6 @@ case "$1" in
          rmdir /hostlab
       fi
 
-      KERNEL_VERSION=`uname -r`
-      if [ -f /lib/modules/$KERNEL_VERSION/modules.dep ]; then
-         echo "Unmounting /lib/modules..."
-         umount /lib/modules
-      fi
-
       echo  "Unmounting and removing /hosthome..."
       umount /hosthome
       rmdir /hosthome

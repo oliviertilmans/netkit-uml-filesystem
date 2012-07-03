@@ -9,4 +9,5 @@ checkfs.sh
 setkey
 ipsec
 mountall.sh
+resolvconf
 
