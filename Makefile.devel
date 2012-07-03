@@ -53,7 +53,7 @@ TWEAKS_DIR=$(FS_BUILD_DIR)/netkit-tweaks
 DEBIAN_VERSION?=squeeze
 
 # Available space in the filesystem image, in MB
-FS_SIZE?=1024
+FS_SIZE?=1536
 
 # Additional mkfs flags
 MKFS_FLAGS?=
@@ -291,7 +291,7 @@ $(BASE_PACKAGES_TARBALL_BASENAME).tgz:
 		$(SUDO_PFX)chroot $(FS_MOUNT_DIR) dpkg-divert --divert `dirname $${DIVERSION}`/orig-`basename $${DIVERSION}` --rename $${DIVERSION}$(SUDO_SFX); \
 		[ -s $(TWEAKS_DIR)/diversions/$${DIVERSION} ] && $(SUDO_PFX)cp $(TWEAKS_DIR)/diversions/$${DIVERSION} $(FS_MOUNT_DIR)/$${DIVERSION}$(SUDO_SFX) || true; \
 	done
-	for PACKAGE in $$(<$(FS_BUILD_DIR)/packages-list); do \
+	for PACKAGE in `cat $(FS_BUILD_DIR)/packages-list`; do \
 		echo Installing $${PACKAGE}...; \
 		$(SUDO_PFX)chroot $(FS_MOUNT_DIR) apt-get install -o APT::Get::AllowUnauthenticated=1 -fqqy $${PACKAGE}$(SUDO_SFX) || exit 1; \
 	done
