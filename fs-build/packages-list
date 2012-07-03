@@ -134,9 +134,6 @@ smbfs
 smcroute
 snmp
 snmpd
-snort
-snort-rules-default
-snort-doc
 squid
 ssl-cert
 ssldump
