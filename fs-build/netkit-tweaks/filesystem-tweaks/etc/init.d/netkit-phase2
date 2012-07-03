@@ -46,8 +46,9 @@ case "$1" in
 
       ASSIGN_VARIABLES=`cat /proc/cmdline | awk -v FS== -v RS=' ' \
          '
-            ($1=="exec") {print "COMMAND=" $2}
+            ($1=="name") {print "HOSTNAME=" $2}
             ($1=="hostlab") {print "HOSTLAB=" $2}
+            ($1=="exec") {print "COMMAND=" $2}
             ($1=="test") {print "TEST=" $1}
          '`
 
