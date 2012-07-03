@@ -50,7 +50,7 @@ TOOLS_SRC_BUILD_DIR=$(TOOLS_SRC_DIR)/$(TOOLS_SRC_BUILD_DIR_RELATIVE)
 TWEAKS_DIR=$(FS_BUILD_DIR)/netkit-tweaks
 
 # Debian distribution to be installed in the filesystem image
-DEBIAN_VERSION?=sid
+DEBIAN_VERSION?=squeeze
 
 # Available space in the filesystem image, in MB
 FS_SIZE?=1024
@@ -65,12 +65,12 @@ MKFS_FLAGS?=
 SUBARCH?=i386
 
 # URL of the Debian mirror to get packages from
-DEBIAN_MIRROR?=http://ftp.it.debian.org/debian
+DEBIAN_MIRROR?=http://ftp.fi.debian.org/debian
 
 # Comma separated list of packages to be included in the base system install.
 # This comes handy should the Debian distribution being installed have broken
 # dependencies.
-ADDITIONAL_PACKAGES=debconf-utils,locales,libept1,libxapian15
+ADDITIONAL_PACKAGES=debconf-utils,locales,libept1
 
 # Files where downloaded Debian packages should be put
 BASE_PACKAGES_TARBALL_BASENAME=debian-base-packages-$(DEBIAN_VERSION)-$(SUBARCH)
