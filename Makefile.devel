@@ -97,11 +97,11 @@ PACKAGES_TARBALL_TIMESTAMP_BASENAME=$(PACKAGES_TARBALL_BASENAME)-$(shell date +%
 ##############################################################################
 
 
-# The CDPATH environment variable can cause problems 
+# The CDPATH environment variable can cause problems
 override CDPATH=
 
 # Uncomment this if you prefer to use sudo (note the space at the end of the line)
-SUDO_PFX=/usr/bin/sudo -E -p %u\''s password:' 
+SUDO_PFX=/usr/bin/sudo -E -p %u\''s password:'
 SUDO_SFX=
 # Uncomment this if you prefer to use su
 #SUDO_PFX=/bin/su -c '
@@ -312,9 +312,10 @@ $(BASE_PACKAGES_TARBALL_BASENAME).tgz:
 .SILENT: .installed_src_tools
 .installed_src_tools: .full_system_installed
 	echo -e "\n\e[1m\e[32m===== Installing additional tools... =====\e[0m"
-	mkdir -p $(TOOLS_SRC_BUILD_DIR)
-	+$(MAKE) -C $(TOOLS_SRC_BUILD_DIR) -f ../Makefile.devel install-all
+	#mkdir -p $(TOOLS_SRC_BUILD_DIR)
+	#+$(MAKE) -C $(TOOLS_SRC_BUILD_DIR) -f ../Makefile.devel install-all
 	: > .installed_src_tools
+	touch .installed_src_tools
 
 .SILENT: .applied_tweaks
 .applied_tweaks: .installed_src_tools
@@ -356,7 +357,7 @@ $(PACKAGES_TARBALL_BASENAME).tgz: | .base_system_installed
 
 
 
-	
+
 
 .PHONY: package
 package: ../netkit-filesystem-$(SUBARCH)-$(NK_FS_RELEASE).tar.bz2
