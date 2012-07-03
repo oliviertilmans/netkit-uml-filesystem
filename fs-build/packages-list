@@ -22,9 +22,6 @@ cron
 debconf
 debian-archive-keyring
 debianutils
-dhcp3-client
-dhcp3-common
-dhcp3-server
 dibbler-client
 dibbler-relay
 dibbler-server
@@ -62,6 +59,8 @@ ipsec-tools
 iptables
 iputils-ping
 ipv6calc
+isc-dhcp-client
+isc-dhcp-server
 klogd
 less
 libdb4.5
