@@ -49,6 +49,10 @@ ASSIGN_VARIABLES=`cat /proc/cmdline | awk -v FS== -v RS=' ' \
                     '`
 eval "$ASSIGN_VARIABLES"
 
+# these may be used by scripts that we call
+export HOSTNAME
+export HOSTLAB
+
 case "$1" in
    start) 
       echo
