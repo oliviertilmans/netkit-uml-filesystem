@@ -39,11 +39,13 @@ console-data	console-data/keymap/qwerty/swedish/variant	select
 # Time zone:
 # Choices: Aden, Almaty, Amman, Anadyr, Aqtau, Aqtobe, Ashgabat, Baghdad, Bahrain, Baku, Bangkok, Beirut, Bishkek, Brunei, Choibalsan, Chongqing, Colombo, Damascus, Dhaka, Dili, Dubai, Dushanbe, Gaza, Harbin, Hebron, Ho_Chi_Minh, Hong_Kong, Hovd, Irkutsk, Istanbul, Jakarta, Jayapura, Jerusalem, Kabul, Kamchatka, Karachi, Kashgar, Kathmandu, Kolkata, Krasnoyarsk, Kuala_Lumpur, Kuching, Kuwait, Macau, Magadan, Makassar, Manila, Muscat, Nicosia, Novokuznetsk, Novosibirsk, Omsk, Oral, Phnom_Penh, Pontianak, Pyongyang, Qatar, Qyzylorda, Rangoon, Riyadh, Riyadh87, Riyadh88, Riyadh89, Sakhalin, Samarkand, Seoul, Shanghai, Singapore, Taipei, Tashkent, Tbilisi, Tehran, Tel_Aviv, Thimphu, Tokyo, Ujung_Pandang, Ulaanbaatar, Urumqi, Vientiane, Vladivostok, Yakutsk, Yekaterinburg, Yerevan
 tzdata	tzdata/Zones/Asia	select	
-# Prepare /etc/resolv.conf for dynamic updates?
+# Dummy template
 resolvconf	resolvconf/linkify-resolvconf	boolean	true
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/serbian/standard/keymap	select	
+# Dummy template
+sing	sing/suid_or_not	boolean	false
 # Modification of /etc/ipsec.conf
 openswan	openswan/no-oe_include_file	note	
 # File name of your PEM format X.509 private key:
@@ -51,8 +53,6 @@ openswan	openswan/existing_x509_key_filename	string
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/serbian/variant	select	
-# Dummy template
-sing	sing/suid_or_not	boolean	false
 # Unable to migrate to dependency-based boot system
 sysv-rc	sysv-rc/unable-to-convert	note	
 # Keyboard layout:
@@ -76,7 +76,7 @@ console-data	console-data/keymap/azerty/layout	select
 ucf	ucf/conflicts_found	error	
 # Dummy template
 dhcp3-server	dhcp3-server/new_auth_behavior	note	
-# Should the Dibbler relay be launched when the system starts?
+# Dummy template
 dibbler-relay	dibbler-relay/start	boolean	false
 # Host name:
 ssl-cert	make-ssl-cert/hostname	string	localhost
@@ -107,7 +107,7 @@ squid	squid/fix_cachedir_perms	boolean	false
 # Dummy template
 # Choices: 
 fontconfig-config	fontconfig/subpixel_rendering	select	Automatic
-# Should the Dibbler server be launched when the system starts?
+# Dummy template
 dibbler-server	dibbler-server/start	boolean	false
 # Dummy template
 # Choices: 
@@ -121,7 +121,7 @@ shorewall-common	shorewall-common/dont_restart	note
 tcpd	tcpd/paranoid-mode	boolean	false
 # Dummy template
 x11-common	x11-common/xwrapper/nice_value	string	0
-# Should the Dibbler client be launched when the system starts?
+# Dummy template
 dibbler-client	dibbler-client/start	boolean	false
 # Dummy template
 # Choices: 
@@ -129,13 +129,13 @@ console-data	console-data/keymap/qwerty/portugese/standard/keymap	select
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/fggiod/turkish/standard/keymap	select	
+# Dummy template
+snort	snort/address_range	string	
 # Email address for the X.509 certificate request:
 openswan	openswan/x509_email_address	string	
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/russian/standard/keymap	select	
-# Dummy template
-snort	snort/address_range	string	
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/swedish/apple_usb/keymap	select	
@@ -467,7 +467,7 @@ console-data	console-data/keymap/dvorak/unknown/variant	select
 console-data	console-data/keymap/qwerty/hebrew/variant	select	
 # File name of your PEM format X.509 RootCA:
 openswan	openswan/existing_x509_rootca_filename	string	
-# Network interfaces reconfiguration mandatory
+# Dummy template
 resolvconf	resolvconf/downup-interfaces	note	
 # Dummy template
 # Choices: 
@@ -494,7 +494,7 @@ tasksel	tasksel/first	multiselect
 # Choices: GMT, GMT+0, GMT+1, GMT+10, GMT+11, GMT+12, GMT+2, GMT+3, GMT+4, GMT+5, GMT+6, GMT+7, GMT+8, GMT+9, GMT-0, GMT-1, GMT-10, GMT-11, GMT-12, GMT-13, GMT-14, GMT-2, GMT-3, GMT-4, GMT-5, GMT-6, GMT-7, GMT-8, GMT-9, GMT0, Greenwich, UCT, UTC, Universal, Zulu
 tzdata	tzdata/Zones/Etc	select	UTC
 # Other destinations for which mail is accepted:
-exim4-config	exim4/dc_other_hostnames	string	brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it
+exim4-config	exim4/dc_other_hostnames	string	brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it
 # Services to restart to make them use the new libraries:
 libssl0.9.8	libssl0.9.8/restart-services	string	
 # Dummy template
@@ -609,7 +609,7 @@ x11-common	x11-common/x11r6_bin_not_empty	note
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/turkish/standard/keymap	select	
-# Append original file to dynamic file?
+# Dummy template
 resolvconf	resolvconf/link-tail-to-original	boolean	false
 # Time zone:
 # Choices: Amsterdam, Andorra, Athens, Belfast, Belgrade, Berlin, Bratislava, Brussels, Bucharest, Budapest, Chisinau, Copenhagen, Dublin, Gibraltar, Guernsey, Helsinki, Isle of Man, Istanbul, Jersey, Kaliningrad, Kiev, Lisbon, Ljubljana, London, Luxembourg, Madrid, Malta, Mariehamn, Minsk, Monaco, Moscow, Nicosia, Oslo, Paris, Podgorica, Prague, Riga, Rome, Samara, San Marino, Sarajevo, Simferopol, Skopje, Sofia, Stockholm, Tallinn, Tirane, Tiraspol, Uzhgorod, Vaduz, Vatican, Vienna, Vilnius, Volgograd, Warsaw, Zagreb, Zaporozhye, Zurich
@@ -733,7 +733,7 @@ tzdata	tzdata/Areas	select	Etc
 console-data	console-data/keymap/azerty/belgian/variant	select	
 # Dummy template
 x11-common	x11-common/upgrade_issues	note	
-# Interfaces to be configured:
+# Dummy template
 dibbler-client	dibbler-client/interfaces	string	
 # Dummy template
 dhcp3-client	dhcp3-client/dhclient-script_moved	note	
@@ -765,8 +765,8 @@ console-data	console-data/bootmap-md5sum	string	none
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/greek/standard/keymap	select	
-# Additional parameters to obtain:
-# Choices: dns, domain
+# Dummy template
+# Choices: 
 dibbler-client	dibbler-client/options	multiselect	dns, domain
 # Dummy template
 # Choices: 

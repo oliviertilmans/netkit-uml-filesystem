@@ -22,9 +22,6 @@ cron
 debconf
 debian-archive-keyring
 debianutils
-dibbler-client
-dibbler-relay
-dibbler-server
 dialog
 diff
 dnsmasq
@@ -120,6 +117,7 @@ psmisc
 python
 quagga
 racoon
+radvd
 rcconf
 rinetd
 samba
