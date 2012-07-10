@@ -1,3 +1,5 @@
+#     -*- makefile -*-
+#
 #     Copyright 2007-2008 Massimo Rimondini - Computer Networks Research Group,
 #     Roma Tre University.
 #
@@ -291,6 +293,10 @@ $(BASE_PACKAGES_TARBALL_BASENAME).tgz:
 		$(SUDO_PFX)chroot $(FS_MOUNT_DIR) dpkg-divert --divert `dirname $${DIVERSION}`/orig-`basename $${DIVERSION}` --rename $${DIVERSION}$(SUDO_SFX); \
 		[ -s $(TWEAKS_DIR)/diversions/$${DIVERSION} ] && $(SUDO_PFX)cp $(TWEAKS_DIR)/diversions/$${DIVERSION} $(FS_MOUNT_DIR)/$${DIVERSION}$(SUDO_SFX) || true; \
 	done
+	echo Installing contents of packages/
+	cp packages/*.deb $(FS_MOUNT_DIR)/tmp
+	$(SUDO_PFX)chroot $(FS_MOUNT_DIR) sh -c "dpkg -i /tmp/*.deb"$(SUDO_SFX) || exit 1; \
+
 	for PACKAGE in `cat $(FS_BUILD_DIR)/packages-list`; do \
 		echo Installing $${PACKAGE}...; \
 		$(SUDO_PFX)chroot $(FS_MOUNT_DIR) apt-get install -o APT::Get::AllowUnauthenticated=1 -fqqy $${PACKAGE}$(SUDO_SFX) || exit 1; \

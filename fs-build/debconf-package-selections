@@ -44,8 +44,6 @@ resolvconf	resolvconf/linkify-resolvconf	boolean	true
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/serbian/standard/keymap	select	
-# Dummy template
-sing	sing/suid_or_not	boolean	false
 # Modification of /etc/ipsec.conf
 openswan	openswan/no-oe_include_file	note	
 # File name of your PEM format X.509 private key:
@@ -53,6 +51,8 @@ openswan	openswan/existing_x509_key_filename	string
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/serbian/variant	select	
+# Dummy template
+sing	sing/suid_or_not	boolean	false
 # Unable to migrate to dependency-based boot system
 sysv-rc	sysv-rc/unable-to-convert	note	
 # Keyboard layout:
@@ -129,13 +129,13 @@ console-data	console-data/keymap/qwerty/portugese/standard/keymap	select
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/fggiod/turkish/standard/keymap	select	
-# Dummy template
-snort	snort/address_range	string	
 # Email address for the X.509 certificate request:
 openswan	openswan/x509_email_address	string	
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/russian/standard/keymap	select	
+# Dummy template
+snort	snort/address_range	string	
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/swedish/apple_usb/keymap	select	
@@ -494,7 +494,7 @@ tasksel	tasksel/first	multiselect
 # Choices: GMT, GMT+0, GMT+1, GMT+10, GMT+11, GMT+12, GMT+2, GMT+3, GMT+4, GMT+5, GMT+6, GMT+7, GMT+8, GMT+9, GMT-0, GMT-1, GMT-10, GMT-11, GMT-12, GMT-13, GMT-14, GMT-2, GMT-3, GMT-4, GMT-5, GMT-6, GMT-7, GMT-8, GMT-9, GMT0, Greenwich, UCT, UTC, Universal, Zulu
 tzdata	tzdata/Zones/Etc	select	UTC
 # Other destinations for which mail is accepted:
-exim4-config	exim4/dc_other_hostnames	string	brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it
+exim4-config	exim4/dc_other_hostnames	string	brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it
 # Services to restart to make them use the new libraries:
 libssl0.9.8	libssl0.9.8/restart-services	string	
 # Dummy template
@@ -532,6 +532,8 @@ console-data	console-data/keymap/qwertz/slovak/standard/keymap	select
 console-data	console-data/keymap/qwerty/british/standard/keymap	select	
 # Dummy template
 snort	snort/please_restart_manually	note	
+# Servers the DHCP relay should forward requests to:
+isc-dhcp-relay	isc-dhcp-relay/servers	string	
 # Really leave the mail system unconfigured?
 exim4-config	exim4/no_config	boolean	true
 # Dummy template
@@ -557,6 +559,8 @@ x11-common	x11-common/xwrapper/nice_value/error	note
 console-data	console-data/keymap/qwerty/czech/variant	select	
 # Root and postmaster mail recipient:
 exim4-config	exim4/dc_postmaster	string	
+# Interfaces the DHCP relay should listen on:
+isc-dhcp-relay	isc-dhcp-relay/interfaces	string	
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/hungarian/standard/keymap	select	
@@ -621,6 +625,8 @@ snort	snort/stats_treshold	string	1
 console-data	console-data/keymap/qwerty/danish/standard/keymap	select	
 # Visible domain name for local users:
 exim4-config	exim4/dc_readhost	string	
+# Additional options for the DHCP relay daemon:
+isc-dhcp-relay	isc-dhcp-relay/options	string	
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/byelorussian/standard/keymap	select	
