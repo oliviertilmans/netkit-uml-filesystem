@@ -26,4 +26,9 @@ quagga
 dbus
 pdns-recursor
 isc-dhcp-server
-
+portmap
+radvd
+isc-dhcp-relay
+fancontrol
+rsyslog
+avahi-daemon

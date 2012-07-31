@@ -5,6 +5,9 @@ apt
 apt-utils
 arping
 arptables
+avahi-daemon
+avahi-utils
+mdns-scan
 base-files
 base-passwd
 bash
@@ -84,6 +87,7 @@ mutt
 ncftp
 ncurses-base
 ncurses-bin
+ndisc6
 net-tools
 netbase
 netcat
