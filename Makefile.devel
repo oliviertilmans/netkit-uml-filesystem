@@ -168,7 +168,12 @@ $(UMOUNT_FS)
 endef
 
 define CLEAN_LOOPDEVS
--for LOOP in /dev/loop[0-9]*; do $(LOSETUP) $${LOOP} | grep -q "netkit-fs" >&/dev/null && $(SUDO_PFX)$(LOSETUP) -d $(SUDO_SFX)$${LOOP}; done >& /dev/null; true
+-for LOOP in /dev/loop[0-9]*; do $(LOSETUP) $${LOOP} | grep -q "netkit-fs" 2>&1 > /dev/null && $(SUDO_PFX)$(LOSETUP) -d $(SUDO_SFX)$${LOOP}; done 2>&1 > /dev/null; true
+endef
+
+
+define CLEAN_LOOPDEV
+-$(SUDO_PFX)$(LOSETUP) -d $(LOOP_DEV)$(SUDO_SFX) >/dev/null 2>&1; true
 endef
 
 
@@ -235,7 +240,7 @@ filesystem: netkit-fs
 .SILENT: netkit-fs
 netkit-fs: .sparsify
 	$(CLEAN_MOUNTDIRS)
-	$(CLEAN_LOOPDEVS)
+	$(CLEAN_LOOPDEV)
 	ln -fs netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE) netkit-fs
 	echo
 	echo "Filesystem size:   $(FS_SIZE) MB"
