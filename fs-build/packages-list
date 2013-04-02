@@ -69,6 +69,7 @@ login
 logrotate
 lrzsz
 lsof
+lua5.1
 lynx
 makedev
 man-db
@@ -112,6 +113,7 @@ perl-modules
 pimd
 portmap
 ppp
+pppoeconf
 procmail
 procps
 proftpd
@@ -121,6 +123,7 @@ quagga
 racoon
 radvd
 rcconf
+rdnssd
 rinetd
 samba
 samba-common
@@ -158,6 +161,7 @@ ulogd
 uml-utilities
 util-linux
 vacation
+valgrind
 vim
 vlan
 wget

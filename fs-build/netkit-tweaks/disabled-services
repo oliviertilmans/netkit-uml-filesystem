@@ -32,3 +32,4 @@ isc-dhcp-relay
 fancontrol
 rsyslog
 avahi-daemon
+rdnssd
