@@ -55,7 +55,7 @@ TWEAKS_DIR=$(FS_BUILD_DIR)/netkit-tweaks
 DEBIAN_VERSION?=wheezy
 
 # Available space in the filesystem image, in MB
-FS_SIZE?=1536
+FS_SIZE?=2048
 
 # Additional mkfs flags
 MKFS_FLAGS?=
@@ -102,8 +102,8 @@ PACKAGES_TARBALL_TIMESTAMP_BASENAME=$(PACKAGES_TARBALL_BASENAME)-$(shell date +%
 # The CDPATH environment variable can cause problems
 override CDPATH=
 
-# Uncomment this if you prefer to use sudo (note the space at the end of the line)
-SUDO_PFX=/usr/bin/sudo -E -p %u\''s password:' 
+# Uncomment this if you prefer to use sudo
+SUDO_PFX=/usr/bin/sudo -E -p %u\''s password:'
 SUDO_SFX=
 # Uncomment this if you prefer to use su
 #SUDO_PFX=/bin/su -c '
@@ -140,40 +140,40 @@ ACTUAL_FS_SIZE_BLOCKS:=$(shell expr $(ACTUAL_FS_SIZE_BYTES) / $(BLOCK_SIZE))
 
 
 define UMOUNT_FS
--$(SUDO_PFX)umount $(FS_MOUNT_DIR)/proc$(SUDO_SFX) >/dev/null 2>&1; true
--$(SUDO_PFX)umount $(FS_MOUNT_DIR)/proc$(SUDO_SFX) >/dev/null 2>&1; true
--$(SUDO_PFX)umount $(FS_MOUNT_DIR)$(SUDO_SFX) >/dev/null 2>&1; true
+-$(SUDO_PFX) umount $(FS_MOUNT_DIR)/proc$(SUDO_SFX) >/dev/null 2>&1; true
+-$(SUDO_PFX) umount $(FS_MOUNT_DIR)/proc$(SUDO_SFX) >/dev/null 2>&1; true
+-$(SUDO_PFX) umount $(FS_MOUNT_DIR)$(SUDO_SFX) >/dev/null 2>&1; true
 endef
 
 define SETUP_LOOPDEV
--$(SUDO_PFX)$(LOSETUP) -d $(LOOP_DEV)$(SUDO_SFX) >/dev/null 2>&1; true
-$(SUDO_PFX)$(LOSETUP) $(LOOP_DEV) $(CURDIR)/netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE)$(SUDO_SFX)
+-$(SUDO_PFX) $(LOSETUP) -d $(LOOP_DEV)$(SUDO_SFX) >/dev/null 2>&1; true
+$(SUDO_PFX) $(LOSETUP) $(LOOP_DEV) $(CURDIR)/netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE)$(SUDO_SFX)
 endef
 
 define SETUP_LOOPFS
--$(SUDO_PFX)$(LOSETUP) -d $(LOOP_DEV)$(SUDO_SFX) >/dev/null 2>&1; true
-$(SUDO_PFX)$(LOSETUP) -o $(PARTITION_OFFSET_BYTES) $(LOOP_DEV) $(CURDIR)/netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE)$(SUDO_SFX)
+-$(SUDO_PFX) $(LOSETUP) -d $(LOOP_DEV)$(SUDO_SFX) >/dev/null 2>&1; true
+$(SUDO_PFX) $(LOSETUP) -o $(PARTITION_OFFSET_BYTES) $(LOOP_DEV) $(CURDIR)/netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE)$(SUDO_SFX)
 endef
 
 define MOUNT_FS
 $(UMOUNT_FS)
 $(SETUP_LOOPFS)
 mkdir -p $(FS_MOUNT_DIR)
--$(SUDO_PFX)mount $(LOOP_DEV) $(FS_MOUNT_DIR)$(SUDO_SFX)
+-$(SUDO_PFX) mount $(LOOP_DEV) $(FS_MOUNT_DIR)$(SUDO_SFX)
 endef
 
 define CLEAN_MOUNTDIRS
 $(UMOUNT_FS)
--$(SUDO_PFX)rm -fr $(FS_MOUNT_DIR)$(SUDO_SFX)
+-$(SUDO_PFX) rm -fr $(FS_MOUNT_DIR)$(SUDO_SFX)
 endef
 
 define CLEAN_LOOPDEVS
--for LOOP in /dev/loop[0-9]*; do $(LOSETUP) $${LOOP} | grep -q "netkit-fs" 2>&1 > /dev/null && $(SUDO_PFX)$(LOSETUP) -d $(SUDO_SFX)$${LOOP}; done 2>&1 > /dev/null; true
+-for LOOP in /dev/loop[0-9]*; do $(LOSETUP) $${LOOP} | grep -q "netkit-fs" 2>&1 > /dev/null && $(SUDO_PFX) $(LOSETUP) -d $(SUDO_SFX)$${LOOP}; done 2>&1 > /dev/null; true
 endef
 
 
 define CLEAN_LOOPDEV
--$(SUDO_PFX)$(LOSETUP) -d $(LOOP_DEV)$(SUDO_SFX) >/dev/null 2>&1; true
+-$(SUDO_PFX) $(LOSETUP) -d $(LOOP_DEV)$(SUDO_SFX) >/dev/null 2>&1; true
 endef
 
 
@@ -255,7 +255,7 @@ netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE):
 .partitions_created: | netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE)
 	echo -e "\n\e[1m\e[32m====== Creating partition table... =======\e[0m"
 	$(SETUP_LOOPDEV)
-	echo "$(PARTITION_OFFSET_SECTORS),,L,*" | $(SUDO_PFX)sfdisk -q -H 1 -S $(SECTORS_PER_TRACK) -uS -L --no-reread $(LOOP_DEV)$(SUDO_SFX)
+	echo "$(PARTITION_OFFSET_SECTORS),,L,*" | $(SUDO_PFX) sfdisk -q -H 1 -S $(SECTORS_PER_TRACK) -uS -L --no-reread $(LOOP_DEV)$(SUDO_SFX)
 	: > .partitions_created
 
 .SILENT: .fs_created
@@ -264,8 +264,8 @@ netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE):
 	$(SETUP_LOOPFS)
 	# Mkfs may overestimate the block count if it is not an integer number;
 	# therefore the block count must be explicitly specified.
-	$(SUDO_PFX)mkfs.ext2 -q -b $(BLOCK_SIZE) $(if $(FS_LABEL),-L $(FS_LABEL),) $(MKFS_FLAGS) $(LOOP_DEV) $(ACTUAL_FS_SIZE_BLOCKS)$(SUDO_SFX)
-	$(SUDO_PFX)tune2fs -c 0 -i 0 $(LOOP_DEV)$(SUDO_SFX)
+	$(SUDO_PFX) mkfs.ext2 -q -b $(BLOCK_SIZE) $(if $(FS_LABEL),-L $(FS_LABEL),) $(MKFS_FLAGS) $(LOOP_DEV) $(ACTUAL_FS_SIZE_BLOCKS)$(SUDO_SFX)
+	$(SUDO_PFX) tune2fs -c 0 -i 0 $(LOOP_DEV)$(SUDO_SFX)
 	: > .fs_created
 
 .SILENT: $(BASE_PACKAGES_TARBALL_BASENAME).tgz
@@ -279,41 +279,41 @@ $(BASE_PACKAGES_TARBALL_BASENAME).tgz:
 .base_system_installed: $(BASE_PACKAGES_TARBALL_BASENAME).tgz .fs_created
 	echo -e "\n\e[1m\e[32m======= Installing base system... ========\e[0m"
 	$(MOUNT_FS)
-	$(SUDO_PFX)$(DEBOOTSTRAP) --arch=$(SUBARCH) $(if $(ADDITIONAL_PACKAGES),--include $(ADDITIONAL_PACKAGES),) --unpack-tarball $(CURDIR)/$(BASE_PACKAGES_TARBALL_BASENAME).tgz $(DEBIAN_VERSION) $(FS_MOUNT_DIR) $(DEBIAN_MIRROR)
+	$(SUDO_PFX) $(DEBOOTSTRAP) --arch=$(SUBARCH) $(if $(ADDITIONAL_PACKAGES),--include $(ADDITIONAL_PACKAGES),) --unpack-tarball $(CURDIR)/$(BASE_PACKAGES_TARBALL_BASENAME).tgz $(DEBIAN_VERSION) $(FS_MOUNT_DIR) $(DEBIAN_MIRROR)
 	: > .base_system_installed
 
 .SILENT: .full_system_installed
 .full_system_installed: .base_system_installed .uncompressed_packages
 	echo -e "\n\e[1m\e[32m=== Installing additional packages... ====\e[0m"
 	$(MOUNT_FS)
-	-$(SUDO_PFX)chroot $(FS_MOUNT_DIR) mount -t proc none /proc$(SUDO_SFX)
+	-$(SUDO_PFX) chroot $(FS_MOUNT_DIR) mount -t proc none /proc$(SUDO_SFX)
 	# First of all, configure the locale installation
-	$(SUDO_PFX)sed -ri 's/^# +en_US/en_US/' $(FS_MOUNT_DIR)/etc/locale.gen$(SUDO_SFX)
-	$(SUDO_PFX)chroot $(FS_MOUNT_DIR) locale-gen$(SUDO_SFX)
-	$(SUDO_PFX)chroot $(FS_MOUNT_DIR) update-locale LANG=en_US.UTF-8 LC_MEASUREMENT=en_US.UTF-8$(SUDO_SFX)
-	$(SUDO_PFX)chroot $(FS_MOUNT_DIR) apt-get update$(SUDO_SFX)
-	cat $(FS_BUILD_DIR)/debconf-package-selections | $(SUDO_PFX)chroot $(FS_MOUNT_DIR) debconf-set-selections$(SUDO_SFX)
+	$(SUDO_PFX) sed -ri 's/^# +en_US/en_US/' $(FS_MOUNT_DIR)/etc/locale.gen$(SUDO_SFX)
+	$(SUDO_PFX) chroot $(FS_MOUNT_DIR) locale-gen$(SUDO_SFX)
+	$(SUDO_PFX) chroot $(FS_MOUNT_DIR) update-locale LANG=en_US.UTF-8 LC_MEASUREMENT=en_US.UTF-8$(SUDO_SFX)
+	$(SUDO_PFX) chroot $(FS_MOUNT_DIR) apt-get update$(SUDO_SFX)
+	cat $(FS_BUILD_DIR)/debconf-package-selections | $(SUDO_PFX) chroot $(FS_MOUNT_DIR) debconf-set-selections$(SUDO_SFX)
 	# Divert some files in order to prevent services from being started
 	for DIVERSION in $(shell find $(TWEAKS_DIR)/diversions -type f ! -wholename "*.svn*" -printf "/%P\n"); do \
-		$(SUDO_PFX)chroot $(FS_MOUNT_DIR) dpkg-divert --divert `dirname $${DIVERSION}`/orig-`basename $${DIVERSION}` --rename $${DIVERSION}$(SUDO_SFX); \
-		[ -s $(TWEAKS_DIR)/diversions/$${DIVERSION} ] && $(SUDO_PFX)cp $(TWEAKS_DIR)/diversions/$${DIVERSION} $(FS_MOUNT_DIR)/$${DIVERSION}$(SUDO_SFX) || true; \
+		$(SUDO_PFX) chroot $(FS_MOUNT_DIR) dpkg-divert --divert `dirname $${DIVERSION}`/orig-`basename $${DIVERSION}` --rename $${DIVERSION}$(SUDO_SFX); \
+		[ -s $(TWEAKS_DIR)/diversions/$${DIVERSION} ] && $(SUDO_PFX) cp $(TWEAKS_DIR)/diversions/$${DIVERSION} $(FS_MOUNT_DIR)/$${DIVERSION}$(SUDO_SFX) || true; \
 	done
 
 	for PACKAGE in `cat $(FS_BUILD_DIR)/packages-list`; do \
 		echo Installing $${PACKAGE}...; \
-		$(SUDO_PFX)chroot $(FS_MOUNT_DIR) apt-get install -o APT::Get::AllowUnauthenticated=1 -fqqy $${PACKAGE}$(SUDO_SFX) || exit 1; \
+		$(SUDO_PFX) chroot $(FS_MOUNT_DIR) apt-get install -o APT::Get::AllowUnauthenticated=1 -fqqy $${PACKAGE}$(SUDO_SFX) || exit 1; \
 	done
 	for DIVERSION in $(shell find $(TWEAKS_DIR)/diversions -type f ! -wholename "*.svn*" -printf "/%P\n"); do \
 		if [ -e $(FS_MOUNT_DIR)/`dirname $${DIVERSION}`/orig-`basename $${DIVERSION}`.dpkg-new ]; then \
-			$(SUDO_PFX)mv $(FS_MOUNT_DIR)/`dirname $${DIVERSION}`/orig-`basename $${DIVERSION}`.dpkg-new $(FS_MOUNT_DIR)/`dirname $${DIVERSION}`/orig-`basename $${DIVERSION}`$(SUDO_SFX); \
+			$(SUDO_PFX) mv $(FS_MOUNT_DIR)/`dirname $${DIVERSION}`/orig-`basename $${DIVERSION}`.dpkg-new $(FS_MOUNT_DIR)/`dirname $${DIVERSION}`/orig-`basename $${DIVERSION}`$(SUDO_SFX); \
 		fi; \
 		if [ -s $(TWEAKS_DIR)/diversions/$${DIVERSION} ]; then \
-			$(SUDO_PFX)rm -f $(FS_MOUNT_DIR)/$${DIVERSION}$(SUDO_SFX); \
-			$(SUDO_PFX)chroot $(FS_MOUNT_DIR) dpkg-divert --rename --remove $${DIVERSION}$(SUDO_SFX); \
+			$(SUDO_PFX) rm -f $(FS_MOUNT_DIR)/$${DIVERSION}$(SUDO_SFX); \
+			$(SUDO_PFX) chroot $(FS_MOUNT_DIR) dpkg-divert --rename --remove $${DIVERSION}$(SUDO_SFX); \
 		fi; \
 	done
-	$(SUDO_PFX)chroot $(FS_MOUNT_DIR) apt-get clean$(SUDO_SFX)
-	$(SUDO_PFX)chroot $(FS_MOUNT_DIR) debconf-get-selections$(SUDO_SFX) > $(FS_BUILD_DIR)/debconf-package-selections$(SUDO_SFX)
+	$(SUDO_PFX) chroot $(FS_MOUNT_DIR) apt-get clean$(SUDO_SFX)
+	$(SUDO_PFX) chroot $(FS_MOUNT_DIR) debconf-get-selections$(SUDO_SFX) > $(FS_BUILD_DIR)/debconf-package-selections$(SUDO_SFX)
 	: > .full_system_installed
 
 
@@ -335,8 +335,8 @@ $(BASE_PACKAGES_TARBALL_BASENAME).tgz:
 $(PACKAGES_TARBALL_BASENAME).tgz: | .base_system_installed
 	echo -e "\n\e[1m\e[33m=== Downloading additional packages... ===\e[0m"
 	$(MOUNT_FS)
-	$(SUDO_PFX)chroot $(FS_MOUNT_DIR) apt-get update$(SUDO_SFX)
-	for PACKAGE in `cat $(FS_BUILD_DIR)/packages-list`; do echo Downloading $${PACKAGE} and its dependencies...; $(SUDO_PFX)chroot $(FS_MOUNT_DIR) apt-get -fqqy --download-only install $${PACKAGE}$(SUDO_SFX); done
+	$(SUDO_PFX) chroot $(FS_MOUNT_DIR) apt-get update$(SUDO_SFX)
+	for PACKAGE in `cat $(FS_BUILD_DIR)/packages-list`; do echo Downloading $${PACKAGE} and its dependencies...; $(SUDO_PFX) chroot $(FS_MOUNT_DIR) apt-get -fqqy --download-only install $${PACKAGE}$(SUDO_SFX); done
 	echo "Compressing packages..."; tar -C $(FS_MOUNT_DIR)/var/cache/apt --exclude=lock -czf $(PACKAGES_TARBALL_TIMESTAMP_BASENAME).tgz .
 	ln -fs $(PACKAGES_TARBALL_TIMESTAMP_BASENAME).tgz $(PACKAGES_TARBALL_BASENAME).tgz
 
@@ -344,15 +344,15 @@ $(PACKAGES_TARBALL_BASENAME).tgz: | .base_system_installed
 .uncompressed_packages: $(PACKAGES_TARBALL_BASENAME).tgz
 	echo "Uncompressing packages..."
 	$(MOUNT_FS)
-	$(SUDO_PFX)tar -C $(FS_MOUNT_DIR)/var/cache/apt -xzf $(PACKAGES_TARBALL_BASENAME).tgz$(SUDO_SFX)
+	$(SUDO_PFX) tar -C $(FS_MOUNT_DIR)/var/cache/apt -xzf $(PACKAGES_TARBALL_BASENAME).tgz$(SUDO_SFX)
 	: > .uncompressed_packages
 
 .SILENT: .sparsify
 .sparsify: .applied_tweaks
 	echo -e "\n\e[1m\e[32m==== Sparsifying filesystem image... =====\e[0m"
 	$(MOUNT_FS)
-	-$(SUDO_PFX)dd if=/dev/zero of=$(FS_MOUNT_DIR)/zeros-mass$(SUDO_SFX) >/dev/null 2>&1; true
-	$(SUDO_PFX)rm -f $(FS_MOUNT_DIR)/zeros-mass$(SUDO_SFX)
+	-$(SUDO_PFX) dd if=/dev/zero of=$(FS_MOUNT_DIR)/zeros-mass$(SUDO_SFX) >/dev/null 2>&1; true
+	$(SUDO_PFX) rm -f $(FS_MOUNT_DIR)/zeros-mass$(SUDO_SFX)
 	$(UMOUNT_FS)
 	mv netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE) netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE).old
 	cp --sparse=always netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE).old netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE)

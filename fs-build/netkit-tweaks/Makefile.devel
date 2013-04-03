@@ -29,7 +29,7 @@ netkit-tweaks: file-tweaks script-tweaks
 file-tweaks:
 	echo "Copying Netkit-specific files..."
 	$(MOUNT_FS)
-	tar -C filesystem-tweaks --exclude=CVS --exclude=.svn -c . | $(SUDO_PFX)tar -C $(FS_MOUNT_DIR) -x$(SUDO_SFX)
+	tar -C filesystem-tweaks --exclude=CVS --exclude=.svn -c . | $(SUDO_PFX) tar -C $(FS_MOUNT_DIR) -x$(SUDO_SFX)
 
 .PHONY: script-tweaks
 .SILENT: script-tweaks
