@@ -7,7 +7,6 @@ arping
 arptables
 avahi-daemon
 avahi-utils
-mdns-scan
 base-files
 base-passwd
 bash
@@ -25,6 +24,9 @@ cron
 debconf
 debian-archive-keyring
 debianutils
+dhcp3-client
+dhcp3-common
+dhcp3-server
 dialog
 diff
 dnsmasq
@@ -76,6 +78,7 @@ man-db
 manpages
 mawk
 mc
+mdns-scan
 mime-support
 mingetty
 minicom
