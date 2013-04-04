@@ -33,3 +33,5 @@ fancontrol
 rsyslog
 avahi-daemon
 rdnssd
+rpcbind
+

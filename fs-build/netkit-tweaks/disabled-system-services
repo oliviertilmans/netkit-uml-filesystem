@@ -1,13 +1,11 @@
 racoon
-shorewall
-hwclockfirst.sh
 keymap.sh
 hwclock.sh
 console-screen.sh
-console-screen.kbd.sh
 checkfs.sh
 setkey
-ipsec
 mountall.sh
+mountall-bootclean.sh
+mountnfs-bootclean.sh
+checkroot-bootclean.sh
 resolvconf
-
