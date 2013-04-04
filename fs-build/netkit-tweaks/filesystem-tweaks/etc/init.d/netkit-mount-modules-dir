@@ -44,6 +44,10 @@ if [ -n "$MODULES" ]; then
    MODULES="$MODULES"/lib/modules
    echo "Mounting kernel modules directory ($MODULES) on /lib/modules/ ..."
    # Write access is needed for depmod in order to work properly
+   if [ ! -d /lib/modules ]
+   then
+       mkdir -p /lib/modules
+   fi
    mount none /lib/modules/ -t hostfs -o rw,$MODULES
 else
    echo "Modules directory not mounted."
