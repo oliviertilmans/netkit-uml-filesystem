@@ -1,2 +1,12 @@
 *~
 debian*gz
+.applied_tweaks
+.base_system_installed
+.fs_created
+.full_system_installed
+.installed_src_tools
+.partitions_created
+.sparsify
+.uncompressed_packages
+installed-packages*
+netkit-fs*
