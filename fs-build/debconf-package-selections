@@ -27,8 +27,6 @@ console-data	console-data/keymap/qwerty/estonian/standard/keymap	select
 console-data	console-data/keymap/qwertz/german/apple_usb/keymap	select	
 # Dummy template
 openvpn	openvpn/vulnerable_prng	note	
-# Reconfigure exim4-config instead of this package
-exim4-daemon-light	exim4-daemon-light/drec	error	
 # Override local changes to /etc/pam.d/common-*?
 libpam-runtime	libpam-runtime/override	boolean	false
 # Services to restart for PAM library upgrade:
@@ -173,7 +171,7 @@ console-data	console-keymaps-at/keymap	select
 # Keymap to use:
 # Choices: American English, French, German, Italian, Spanish, Swedish, Swiss German
 console-data	console-keymaps-amiga/keymap	select	
-# IP address or host name of the outgoing smarthost:
+# Dummy template
 exim4-config	exim4/dc_smarthost	string	
 # Dummy template
 # Choices: 
@@ -185,7 +183,7 @@ console-data	console-data/keymap/qwerty/finnish/apple_usb/keymap	select
 udev	udev/new_kernel_needed	boolean	false
 # Disable inetd entries?
 update-inetd	update-inetd/ask-disable-entries	boolean	false
-# Domains to relay mail for:
+# Dummy template
 exim4-config	exim4/dc_relay_domains	string	
 # Do you want to upgrade glibc now?
 libc6	glibc/upgrade	boolean	true
@@ -235,7 +233,7 @@ console-data	console-data/keymap/azerty/belgian/apple_usb/keymap	select
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/brazilian/standard/keymap	select	
-# Machines to relay mail for:
+# Dummy template
 exim4-config	exim4/dc_relay_nets	string	
 # Dummy template
 # Choices: 
@@ -245,9 +243,9 @@ x-ttcidfont-conf	x-ttcidfont-conf/tt_backend	select	freetype
 console-data	console-data/keymap/qwertz/slovene/standard/keymap	select	
 # Dummy template
 isc-dhcp-server	isc-dhcp-server/interfaces	string	
-# Remove undelivered messages in spool directory?
+# Dummy template
 exim4-base	exim4/purge_spool	boolean	false
-# System mail name:
+# Dummy template
 exim4-config	exim4/mailname	string	mstenber-ubuntu-1204
 # Dummy template
 # Choices: 
@@ -255,7 +253,7 @@ console-data	console-data/keymap/qwerty/british/variant	select
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/ukrainian/variant	select	
-# Do you really want to stop the Quagga daemon?
+# Dummy template
 quagga	quagga/really_stop	boolean	false
 # Use password encryption?
 samba-common	samba-common/encrypt_passwords	boolean	true
@@ -266,8 +264,6 @@ openswan	openswan/restart	boolean	true
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/icelandic/standard/keymap	select	
-# Reconfigure exim4-config instead of this package
-exim4-base	exim4-base/drec	error	
 # Should resolv.conf settings be overridden?
 bind9	bind9/run-resolvconf	boolean	true
 # Dummy template
@@ -285,8 +281,8 @@ console-data	console-data/keymap/qwerty/british/apple_usb/keymap	select
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/slovak/variant	select	
-# Delivery method for local mail:
-# Choices: mbox format in /var/mail/, Maildir format in home directory
+# Dummy template
+# Choices: 
 exim4-config	exim4/dc_localdelivery	select	mbox format in /var/mail/
 # Dummy template
 # Choices: 
@@ -303,8 +299,8 @@ console-data	console-keymaps-acorn/keymap	select
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/czech/standard/keymap	select	
-# Run proftpd:
-# Choices: from inetd, standalone
+# Dummy template
+# Choices: 
 proftpd-basic	shared/proftpd/inetd_or_standalone	select	standalone
 # Dummy template
 # Choices: 
@@ -374,7 +370,7 @@ update-inetd	update-inetd/ask-entry-present	boolean	true
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/croat/variant	select	
-# IP-addresses to listen on for incoming SMTP connections:
+# Dummy template
 exim4-config	exim4/dc_local_interfaces	string	127.0.0.1 ; ::1
 # Dummy template
 # Choices: 
@@ -415,7 +411,7 @@ tasksel	tasksel/desktop	multiselect	gnome
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/polish/variant	select	
-# Keep number of DNS-queries minimal (Dial-on-Demand)?
+# Dummy template
 exim4-config	exim4/dc_minimaldns	boolean	false
 # Dummy template
 # Choices: 
@@ -495,8 +491,8 @@ tasksel	tasksel/first	multiselect
 # Time zone:
 # Choices: GMT, GMT+0, GMT+1, GMT+10, GMT+11, GMT+12, GMT+2, GMT+3, GMT+4, GMT+5, GMT+6, GMT+7, GMT+8, GMT+9, GMT-0, GMT-1, GMT-10, GMT-11, GMT-12, GMT-13, GMT-14, GMT-2, GMT-3, GMT-4, GMT-5, GMT-6, GMT-7, GMT-8, GMT-9, GMT0, Greenwich, UCT, UTC, Universal, Zulu
 tzdata	tzdata/Zones/Etc	select	UTC
-# Other destinations for which mail is accepted:
-exim4-config	exim4/dc_other_hostnames	string	mstenber-ubuntu-1204
+# Dummy template
+exim4-config	exim4/dc_other_hostnames	string	mstenber-ubuntu-1204:mstenber-ubuntu-1204
 # Dummy template
 libssl0.9.8	libssl0.9.8/restart-services	string	
 # Dummy template
@@ -509,8 +505,8 @@ console-data	console-data/keymap/qwertz/hungarian/standard/keymap	select
 ca-certificates	ca-certificates/new_crts	multiselect	
 # for internal use
 x11-common	x11-common/xwrapper/actual_allowed_users	string	console
-# General type of mail configuration:
-# Choices: internet site; mail is sent and received directly using SMTP, mail sent by smarthost; received via SMTP or fetchmail, mail sent by smarthost; no local mail, local delivery only; not on a network, no configuration at this time
+# Dummy template
+# Choices: 
 exim4-config	exim4/dc_eximconfig_configtype	select	local delivery only; not on a network
 # Dummy template
 # Choices: 
@@ -534,7 +530,7 @@ console-data	console-data/keymap/qwerty/british/standard/keymap	select
 snort	snort/please_restart_manually	note	
 # Dummy template
 isc-dhcp-relay	isc-dhcp-relay/servers	string	
-# Really leave the mail system unconfigured?
+# Dummy template
 exim4-config	exim4/no_config	boolean	true
 # Dummy template
 # Choices: 
@@ -547,7 +543,7 @@ dhcp3-server	dhcp3-server/new_next-server_behaviour	note
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/hungarian/variant	select	
-# Hide local mail name in outgoing mail?
+# Dummy template
 exim4-config	exim4/hide_mailname	boolean	
 # Choose software to install:
 # Choices: 
@@ -557,7 +553,7 @@ x11-common	x11-common/xwrapper/nice_value/error	note
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/czech/variant	select	
-# Root and postmaster mail recipient:
+# Dummy template
 exim4-config	exim4/dc_postmaster	string	
 # Dummy template
 isc-dhcp-relay	isc-dhcp-relay/interfaces	string	
@@ -625,7 +621,7 @@ snort	snort/stats_treshold	string	1
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/danish/standard/keymap	select	
-# Visible domain name for local users:
+# Dummy template
 exim4-config	exim4/dc_readhost	string	
 # Dummy template
 isc-dhcp-relay	isc-dhcp-relay/options	string	
@@ -655,7 +651,7 @@ samba	samba/generate_smbpasswd	boolean	true
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/japanese/variant	select	
-# Split configuration into small files?
+# Dummy template
 exim4-config	exim4/use_split_config	boolean	false
 # Dummy template
 # Choices: 
@@ -703,7 +699,7 @@ openswan	openswan/create_rsa_key	boolean	true
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/japanese/pc_110/keymap	select	
-# Create the TUN/TAP device?
+# Dummy template
 openvpn	openvpn/create_tun	boolean	false
 # Dummy template
 snort-common	snort/deprecated_config	note	

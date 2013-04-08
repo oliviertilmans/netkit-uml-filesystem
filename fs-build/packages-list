@@ -39,7 +39,6 @@ expect
 file
 findutils
 freeradius
-ftp
 grep
 gzip
 host
@@ -76,8 +75,6 @@ mount
 mrd6
 mrtg
 mtr-tiny
-mutt
-ncftp
 ncurses-base
 ncurses-bin
 ndisc6
@@ -87,13 +84,10 @@ netcat
 netcat6
 netmask
 nmap
-oinkmaster
-openbsd-inetd
 openssh-client
 openssh-server
 openssl
 openswan
-openvpn
 passwd
 patch
 pdns-recursor
@@ -105,10 +99,8 @@ portmap
 ppp
 pppoeconf
 procps
-proftpd
 psmisc
 python
-quagga
 racoon
 radvd
 rcconf
@@ -148,5 +140,3 @@ valgrind
 vim
 vlan
 wget
-xorp
-
