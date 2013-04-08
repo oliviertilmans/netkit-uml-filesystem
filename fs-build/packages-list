@@ -35,10 +35,6 @@ e2fslibs
 e2fsprogs
 ebtables
 emacs23-nox
-exim4
-exim4-base
-exim4-config
-exim4-daemon-light
 expect
 file
 findutils
@@ -108,7 +104,6 @@ pimd
 portmap
 ppp
 pppoeconf
-procmail
 procps
 proftpd
 psmisc

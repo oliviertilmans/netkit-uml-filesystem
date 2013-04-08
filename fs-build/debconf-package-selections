@@ -27,8 +27,6 @@ console-data	console-data/keymap/qwerty/estonian/standard/keymap	select
 console-data	console-data/keymap/qwertz/german/apple_usb/keymap	select	
 # Dummy template
 openvpn	openvpn/vulnerable_prng	note	
-# Reconfigure exim4-config instead of this package
-exim4-daemon-light	exim4-daemon-light/drec	error	
 # Override local changes to /etc/pam.d/common-*?
 libpam-runtime	libpam-runtime/override	boolean	false
 # Services to restart for PAM library upgrade:
@@ -173,8 +171,6 @@ console-data	console-keymaps-at/keymap	select
 # Keymap to use:
 # Choices: American English, French, German, Italian, Spanish, Swedish, Swiss German
 console-data	console-keymaps-amiga/keymap	select	
-# IP address or host name of the outgoing smarthost:
-exim4-config	exim4/dc_smarthost	string	
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/romanian/standard/keymap	select	
@@ -185,8 +181,6 @@ console-data	console-data/keymap/qwerty/finnish/apple_usb/keymap	select
 udev	udev/new_kernel_needed	boolean	false
 # Disable inetd entries?
 update-inetd	update-inetd/ask-disable-entries	boolean	false
-# Domains to relay mail for:
-exim4-config	exim4/dc_relay_domains	string	
 # Do you want to upgrade glibc now?
 libc6	glibc/upgrade	boolean	true
 libc6:amd64	glibc/upgrade	boolean	true
@@ -235,8 +229,6 @@ console-data	console-data/keymap/azerty/belgian/apple_usb/keymap	select
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/brazilian/standard/keymap	select	
-# Machines to relay mail for:
-exim4-config	exim4/dc_relay_nets	string	
 # Dummy template
 # Choices: 
 x-ttcidfont-conf	x-ttcidfont-conf/tt_backend	select	freetype
@@ -245,10 +237,6 @@ x-ttcidfont-conf	x-ttcidfont-conf/tt_backend	select	freetype
 console-data	console-data/keymap/qwertz/slovene/standard/keymap	select	
 # Dummy template
 isc-dhcp-server	isc-dhcp-server/interfaces	string	
-# Remove undelivered messages in spool directory?
-exim4-base	exim4/purge_spool	boolean	false
-# System mail name:
-exim4-config	exim4/mailname	string	brunello.dia.uniroma3.it
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/british/variant	select	
@@ -263,13 +251,9 @@ samba-common	samba-common/encrypt_passwords	boolean	true
 samba-common	samba-common/dhcp	boolean	false
 # Restart Openswan now?
 openswan	openswan/restart	boolean	true
-# Reconfigure exim4-config instead of this package
-exim4	exim4/drec	error	
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/icelandic/standard/keymap	select	
-# Reconfigure exim4-config instead of this package
-exim4-base	exim4-base/drec	error	
 # Should resolv.conf settings be overridden?
 bind9	bind9/run-resolvconf	boolean	true
 # Dummy template
@@ -287,9 +271,6 @@ console-data	console-data/keymap/qwerty/british/apple_usb/keymap	select
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/slovak/variant	select	
-# Delivery method for local mail:
-# Choices: mbox format in /var/mail/, Maildir format in home directory
-exim4-config	exim4/dc_localdelivery	select	mbox format in /var/mail/
 # Dummy template
 # Choices: 
 openswan	openswan/start_level	select	earliest
@@ -376,8 +357,6 @@ update-inetd	update-inetd/ask-entry-present	boolean	true
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/croat/variant	select	
-# IP-addresses to listen on for incoming SMTP connections:
-exim4-config	exim4/dc_local_interfaces	string	127.0.0.1
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/czech/standard/keymap	select	
@@ -417,8 +396,6 @@ tasksel	tasksel/desktop	multiselect	gnome
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/polish/variant	select	
-# Keep number of DNS-queries minimal (Dial-on-Demand)?
-exim4-config	exim4/dc_minimaldns	boolean	false
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/dvorak/unknown/left_single-handed/keymap	select	
@@ -497,8 +474,6 @@ tasksel	tasksel/first	multiselect
 # Time zone:
 # Choices: GMT, GMT+0, GMT+1, GMT+10, GMT+11, GMT+12, GMT+2, GMT+3, GMT+4, GMT+5, GMT+6, GMT+7, GMT+8, GMT+9, GMT-0, GMT-1, GMT-10, GMT-11, GMT-12, GMT-13, GMT-14, GMT-2, GMT-3, GMT-4, GMT-5, GMT-6, GMT-7, GMT-8, GMT-9, GMT0, Greenwich, UCT, UTC, Universal, Zulu
 tzdata	tzdata/Zones/Etc	select	UTC
-# Other destinations for which mail is accepted:
-exim4-config	exim4/dc_other_hostnames	string	brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it:brunello.dia.uniroma3.it
 # Dummy template
 libssl0.9.8	libssl0.9.8/restart-services	string	
 # Dummy template
@@ -511,9 +486,6 @@ console-data	console-data/keymap/qwertz/hungarian/standard/keymap	select
 ca-certificates	ca-certificates/new_crts	multiselect	
 # for internal use
 x11-common	x11-common/xwrapper/actual_allowed_users	string	console
-# General type of mail configuration:
-# Choices: internet site; mail is sent and received directly using SMTP, mail sent by smarthost; received via SMTP or fetchmail, mail sent by smarthost; no local mail, local delivery only; not on a network, no configuration at this time
-exim4-config	exim4/dc_eximconfig_configtype	select	local delivery only; not on a network
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/fggiod/layout	select	
@@ -536,8 +508,6 @@ console-data	console-data/keymap/qwerty/british/standard/keymap	select
 snort	snort/please_restart_manually	note	
 # Dummy template
 isc-dhcp-relay	isc-dhcp-relay/servers	string	
-# Really leave the mail system unconfigured?
-exim4-config	exim4/no_config	boolean	true
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/us_american/standard/keymap	select	
@@ -549,8 +519,6 @@ dhcp3-server	dhcp3-server/new_next-server_behaviour	note
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/hungarian/variant	select	
-# Hide local mail name in outgoing mail?
-exim4-config	exim4/hide_mailname	boolean	
 # Choose software to install:
 # Choices: 
 tasksel	tasksel/tasks	multiselect	
@@ -559,8 +527,6 @@ x11-common	x11-common/xwrapper/nice_value/error	note
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/czech/variant	select	
-# Root and postmaster mail recipient:
-exim4-config	exim4/dc_postmaster	string	
 # Dummy template
 isc-dhcp-relay	isc-dhcp-relay/interfaces	string	
 # Dummy template
@@ -627,8 +593,6 @@ snort	snort/stats_treshold	string	1
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/danish/standard/keymap	select	
-# Visible domain name for local users:
-exim4-config	exim4/dc_readhost	string	
 # Dummy template
 isc-dhcp-relay	isc-dhcp-relay/options	string	
 # Dummy template
@@ -657,8 +621,6 @@ samba	samba/generate_smbpasswd	boolean	true
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/japanese/variant	select	
-# Split configuration into small files?
-exim4-config	exim4/use_split_config	boolean	false
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/portugese/variant	select	
