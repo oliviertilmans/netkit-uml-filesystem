@@ -52,6 +52,8 @@ ipsec-tools
 iptables
 iputils-ping
 ipv6calc
+isc-dhcp-client
+isc-dhcp-server
 less
 links
 locate

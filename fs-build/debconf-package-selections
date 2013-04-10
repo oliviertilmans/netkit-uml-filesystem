@@ -241,7 +241,7 @@ x-ttcidfont-conf	x-ttcidfont-conf/tt_backend	select	freetype
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwertz/slovene/standard/keymap	select	
-# Dummy template
+# Network interfaces on which the DHCP server should listen:
 isc-dhcp-server	isc-dhcp-server/interfaces	string	
 # Dummy template
 exim4-base	exim4/purge_spool	boolean	false
@@ -724,7 +724,7 @@ dash	dash/sh	boolean	false
 # Dummy template
 # Choices: 
 console-data	console-data/keymap/qwerty/latin_american/standard/keymap	select	
-# Dummy template
+# Manual configuration required after installation
 isc-dhcp-server	isc-dhcp-server/config_warn	note	
 # Services to restart to make them use the new libraries:
 libssl1.0.0:amd64	libssl1.0.0/restart-services	string	
