@@ -1,3 +1,6 @@
+F6.0
+  - distribution is now wheezy (fingeon)
+
 F5.2
    - Installed strace (bug #8).
    - Fixed some warnings during the startup of virtual machines when using
