@@ -370,23 +370,15 @@ $(PACKAGES_TARBALL_BASENAME).tgz: | .base_system_installed
 package: ../netkit-filesystem-$(SUBARCH)-$(NK_FS_RELEASE).tar.bz2
 
 ../netkit-filesystem-$(SUBARCH)-$(NK_FS_RELEASE).tar.bz2: netkit-fs
-	tar --exclude=".*" --exclude="CVS" --exclude="$(FS_MOUNT_DIR_RELATIVE)" --exclude="*.tar.bz2" --exclude="*.tar.gz" --exclude="*.deb" --exclude="*.tgz" --exclude="$(TOOLS_SRC_BUILD_DIR_RELATIVE)" -C ../.. -cSjf ../netkit-filesystem-$(SUBARCH)-$(NK_FS_RELEASE).tar.bz2 netkit/fs
-
-
-
-
-
-
-
-
-
-
+	mkdir -p build/netkit/fs
+	mv netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE) netkit-fs README netkit-filesystem-version installed-packages-* CHANGES build/netkit/fs/
+	tar -C build -cSjf ../netkit-filesystem-$(SUBARCH)-$(NK_FS_RELEASE).tar.bz2 netkit
 
 .PHONY: clean
 clean:
 	$(CLEAN_MOUNTDIRS)
 	$(CLEAN_LOOPDEVS)
-	-rm -fr $(BUILD_DIR) $(FS_MOUNT_DIR) .partitions_created .fs_created .base_system_installed .full_system_installed .uncompressed_packages .installed_src_tools .applied_tweaks .sparsify netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE) netkit-fs installed-packages-$(SUBARCH)-$(NK_FS_RELEASE) installed-packages
+	-rm -fr $(BUILD_DIR) $(FS_MOUNT_DIR) .partitions_created .fs_created .base_system_installed .full_system_installed .uncompressed_packages .installed_src_tools .applied_tweaks .sparsify netkit-fs-$(SUBARCH)-$(NK_FS_RELEASE) netkit-fs installed-packages-$(SUBARCH)-$(NK_FS_RELEASE) installed-packages build
 	-$(MAKE) -C $(TOOLS_SRC_BUILD_DIR) -f ../Makefile.devel clean
 
 .PHONY: clean-all
