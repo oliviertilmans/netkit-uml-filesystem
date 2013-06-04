@@ -14,3 +14,12 @@ eval "${SUDO_PFX} cp ../../netkit-filesystem-version ${FS_MOUNT_DIR}/etc${SUDO_S
 
 #eval "${SUDO_PFX} chroot ${FS_MOUNT_DIR} update-exim4.conf ${SUDO_SFX}"
 
+
+# Typically, when starting bunch of parallel VMs, parallel boot within
+# VM doesn't really improve the experience. So disabling it, for now.
+
+#touch ${FS_MOUNT_DIR}/etc/init.d/.legacy-bootordering
+
+# Make the modules directory - that's where we want to mount things
+eval "${SUDO_PFX} mkdir -p ${FS_MOUNT_DIR}/lib/modules"
+
