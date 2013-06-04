@@ -107,6 +107,7 @@ racoon
 radvd
 rcconf
 rdnssd
+realpath
 rinetd
 samba
 samba-common
