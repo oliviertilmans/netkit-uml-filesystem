@@ -21,6 +21,7 @@ pipsecd
 portmap
 proftpd
 quagga
+racoon
 radvd
 rdnssd
 rinetd
@@ -34,3 +35,4 @@ squid
 ssh
 ulogd
 xorp
+x11-common

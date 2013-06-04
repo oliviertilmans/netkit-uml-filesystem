@@ -1,4 +1,4 @@
-racoon
+kbd
 keymap.sh
 hwclock.sh
 console-screen.sh
@@ -9,3 +9,5 @@ mountall-bootclean.sh
 mountnfs-bootclean.sh
 checkroot-bootclean.sh
 resolvconf
+udev
+udev-mtab
