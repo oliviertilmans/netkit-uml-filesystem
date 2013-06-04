@@ -12,6 +12,7 @@ base-passwd
 bash
 bash-completion
 bind9
+bootchart2
 bridge-utils
 bsdmainutils
 bsdutils
@@ -60,6 +61,7 @@ locate
 login
 logrotate
 lrzsz
+lsb-release
 lsof
 lua5.1
 lynx

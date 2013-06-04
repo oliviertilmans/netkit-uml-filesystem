@@ -1,6 +1,7 @@
 apache2
 avahi-daemon
 bind9
+bootchart-done
 cron
 dbus
 dhcp3-server
