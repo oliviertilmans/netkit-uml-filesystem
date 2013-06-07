@@ -307,10 +307,8 @@ $(BASE_PACKAGES_TARBALL_BASENAME).tgz:
 		if [ -e $(FS_MOUNT_DIR)/`dirname $${DIVERSION}`/orig-`basename $${DIVERSION}`.dpkg-new ]; then \
 			$(SUDO_PFX) mv $(FS_MOUNT_DIR)/`dirname $${DIVERSION}`/orig-`basename $${DIVERSION}`.dpkg-new $(FS_MOUNT_DIR)/`dirname $${DIVERSION}`/orig-`basename $${DIVERSION}`$(SUDO_SFX); \
 		fi; \
-		if [ -s $(TWEAKS_DIR)/diversions/$${DIVERSION} ]; then \
-			$(SUDO_PFX) rm -f $(FS_MOUNT_DIR)/$${DIVERSION}$(SUDO_SFX); \
-			$(SUDO_PFX) chroot $(FS_MOUNT_DIR) dpkg-divert --rename --remove $${DIVERSION}$(SUDO_SFX); \
-		fi; \
+		$(SUDO_PFX) rm -f $(FS_MOUNT_DIR)/$${DIVERSION}$(SUDO_SFX); \
+		$(SUDO_PFX) chroot $(FS_MOUNT_DIR) dpkg-divert --rename --remove $${DIVERSION}$(SUDO_SFX); \
 	done
 	$(SUDO_PFX) chroot $(FS_MOUNT_DIR) apt-get clean$(SUDO_SFX)
 	$(SUDO_PFX) chroot $(FS_MOUNT_DIR) debconf-get-selections$(SUDO_SFX) > $(FS_BUILD_DIR)/debconf-package-selections$(SUDO_SFX)
