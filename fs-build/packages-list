@@ -137,6 +137,7 @@ tshark
 tftp
 tftpd
 tzdata
+udhcpc
 uml-utilities
 util-linux
 valgrind
