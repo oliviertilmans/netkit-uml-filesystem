@@ -163,3 +163,4 @@ gdebi-core
 libtool
 graphviz
 udev
+uuid-runtime
