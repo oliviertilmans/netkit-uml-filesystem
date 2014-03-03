@@ -55,7 +55,7 @@ TWEAKS_DIR=$(FS_BUILD_DIR)/netkit-tweaks
 DEBIAN_VERSION?=wheezy
 
 # Available space in the filesystem image, in MB
-FS_SIZE?=2048
+FS_SIZE?=4096
 
 # Additional mkfs flags
 MKFS_FLAGS?=
